@@ -8,6 +8,16 @@ let hints = document.querySelector('#hints')
 let letters = [];
 let letterlist = document.querySelector("#letterlist")
 let userInput = document.getElementById('userInput');
+let settbutton = document.getElementById("settbutton");
+let modal = document.getElementsByClassName("modal")[0]
+let single = document.getElementById("one")
+let wordchoice = document.getElementById("wordchoice")
+let wordmodal = document.getElementsByClassName("wordmodal")[0]
+let multi = document.getElementById("multi")
+let modalok = document.getElementById("modalok")
+let wordinput = document.getElementById("wordinput")
+let singlemode = true
+
 // let words = ["deposit",
 //     "iron",
 //     "salmon",
@@ -43,6 +53,7 @@ cypher.innerHTML = "*".repeat(secretWord.length);
 
 okButton.onclick = function (event) {
     event.preventDefault();
+    userInput.select()
     let letter = userInput.value;
     // letterlist.innerHTML = letter
     if (!letters.includes(letter)){
@@ -63,14 +74,14 @@ okButton.onclick = function (event) {
             // console.log(secretWord[i]);
         } console.log(newCypher);
         cypher.innerHTML=newCypher;
-        console.log("you guessed it >:)");
+        console.log("you guessed it");
     if (cypher.innerHTML == secretWord){
         hints.innerHTML = "you win!";
         hints.style.color = "green";
     }
     }
     else {
-        console.log("no, try again >>>:(");
+        console.log("no, try again");
         imageNumber = imageNumber-1;
         img.src = "snowman" + imageNumber + ".jpg";
         if(imageNumber == 0){
@@ -81,18 +92,83 @@ okButton.onclick = function (event) {
     }
 }
 newgameButton.onclick = function (event) {
+    if (singlemode){
+        secretWord = words[Math.floor(Math.random()*(words.length))];
+        startgame()
+    }
+    else{
+        wordmodal.style.opacity = 1
+        wordmodal.style.pointerEvents = "auto"
+        wordinput.value = ""
+    }
+   event.preventDefault()
+}
+
+
+single.onclick = function(event){
+    secretWord = words[Math.floor(Math.random()*(words.length))];
+    startgame()
+    modal.style.opacity = 0
+    modal.style.pointerEvents = "none"
     event.preventDefault();
+    document.getElementById("title").innerHTML = "snowman"
+    document.title = "snowman"
+    singlemode = true
+}
+
+
+function startgame(){
+    userInput.value = ""
+    letters = [];
+    letterlist.innerHTML = "";
     console.log(userInput.value);
     newgameButton.disabled = false;
     okButton.disabled = false
-    secretWord = words[Math.floor(Math.random()*(words.length))];
     cypher.innerHTML = "*".repeat(secretWord.length);
     imageNumber = 7 
     img.src = "snowman" + imageNumber + ".jpg";
     hints.innerHTML = 'write down a letter and press the button "ok"';
     hints.style.color = "#47868f";
-    letters = [];
+}
+
+settbutton.onclick = function(event){
+    console.log("setting");
+    event.preventDefault()
+    modal.style.opacity = 1
+    modal.style.transform = " translate(-50%, -50%) scale(1)"
+    modal.style.pointerEvents = "auto"
+}
+
+multi.onclick = function(event){
+    console.log("1")
+    event.preventDefault()
+    modal.style.opacity = 0
+    modal.style.pointerEvents = "none"
+    wordmodal.style.opacity = 1
+    wordmodal.style.pointerEvents = "auto"
+    document.getElementById("title").innerHTML = "snowman - multiplayer!"
+    document.title = "snowman - multiplayer!"
+    singlemode = false
+
+
+}
+
+modalok.onclick = function(event){
+    event.preventDefault()
+    wordmodal.style.opacity = 0
+    wordmodal.style.pointerEvents = "none"
+    secretWord = wordinput.value
+    startgame()
+    console.log(secretWord)
 }
 
 
+modal.onclick = function(){
+    modal.style.opacity = 0
+    modal.style.pointerEvents = "none"
+}
+modal.children[0].onclick = function(event){
+    event.stopPropagation()
+}
 
+// single onclick bug

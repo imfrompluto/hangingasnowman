@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,27 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpg" href="snowmanico.jpg">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Andika+New+Basic:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Andika+New+Basic:ital,wght@0,400;1,700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
+    <div class="modal">
+        <form id="settings" action="">
+            <h1>settings</h1>
+            <button id="one">single player</button>
+            <button id="multi">multiplayer</button>
+        </form>
+    </div>
+    <div class="wordmodal">
+        <form id="wordchoice" action="">
+            <h1>choose a word</h1>
+            <input id="wordinput" type="text">
+            <button id="modalok">ok</button>
+        </form>
+    </div>
     <form action="">
-        <h3>snowman :)</h3>
+        <h3  id="title">snowman</h3>
         <img id="hello" src="snowman7.jpg" alt="">
         <h3 id="cypher">***</h3>
         <input id="userInput" type="text" maxlength="1">
@@ -19,12 +36,15 @@
             <button id="okButton">ok</button>
             <button id="newgameButton">new game</button>
         </div>
+        <button id="settbutton">settings</button>
         <p id='hints'>write down a letter and press the button "ok"</p>
         <h4 id=letterlist></h4>
-        
+
+
     </form>
     <script src="script.js" type="module"></script>
-     
+
 </body>
 
 </html>
+<!-- when you press on multiplayer, change the title "snowman" to "snowman - multiplayer" -->

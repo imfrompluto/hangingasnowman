@@ -14,10 +14,12 @@ form{
 }
 button{
     line-height: 40px;
-    width: 70px;
+    padding: 0 20px;
     border-style: none;
     color: rgb(0, 107, 139);
     background: white;
+    font-size: 15px;
+    border-radius: 10px;
 
 }
 h3, input, button, p{
@@ -61,4 +63,50 @@ p{
 h4{
     font-family: 'Andika New Basic', sans-serif; 
     margin-bottom: 10px;
+}
+
+#settings, #wordchoice{
+    background-color: rgb(255, 255, 255);
+    width: 90%;
+    max-width: 500px;
+    display: inline-block;
+    font-size: 0;
+    border-radius: 6px;
+    padding: 15px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+}
+
+.wordmodal input{
+    width: 100%;
+    margin-top: 15px;
+}
+
+.modal, .wordmodal{
+    position: fixed;
+    height: 200%;
+    width: 200%;
+    background-color: rgba(233, 245, 255, 0.712);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: .6s;
+
+}
+
+h1{
+    font-family: 'Andika New Basic', sans-serif;
+    font-size: 15px;
+    color: #4eb3c3;
+}
+
+#settbutton{
+  margin-top: 8px;
 }
